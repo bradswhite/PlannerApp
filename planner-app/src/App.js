@@ -7,6 +7,10 @@ import Cards from './components/Cards'
 import AddTask from './components/AddTask'
 import Edit from './components/Edit'
 
+/**
+ * Displays app with routes: home, add or edit
+ * @returns {jsx}
+ */
 const App = () => {
 	const [ tasks, setTasks ] = useState([])
 
@@ -16,6 +20,7 @@ const App = () => {
 
 	const [ cardAddKey, setCardAddKey ] = useState()
 
+	// This will run when component mounts (page loads) and populate us with initial tasks:
 	useEffect(() => { getTasks(setTasks) }, [])
 
 	return (

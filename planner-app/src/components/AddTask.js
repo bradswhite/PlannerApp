@@ -1,11 +1,19 @@
 import React, { useState } from 'react'
 import Select from 'react-select'
 
+/**
+ * Displays form to add task
+ * @param {json} tasks
+ * @param {method} setTasks
+ * @param {string} cardKey
+ * @param {method} addTask
+ * @param {method} setRoute
+ * @returns {jsx}
+ */
 const Add = ({ tasks, setTasks, cardKey, addTask, setRoute }) => {
 	const [ text, setText ] = useState('')
 
 	const [ card, setCard ] = useState(cardKey)
-
 	
 	const cardNames = [
 		{ label: 'Monday', value: 0 },
@@ -16,6 +24,9 @@ const Add = ({ tasks, setTasks, cardKey, addTask, setRoute }) => {
 	]	
 	const cardKeys = { m: 0, t: 1, w: 2, th: 3, f: 4 }
 
+	/**
+	 * Calls method to add task to db, local copy and return to home route
+	 */
 	const handleAdd = async () => {
 		const id = await addTask(text)
 		setTasks([
