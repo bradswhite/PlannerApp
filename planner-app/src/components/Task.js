@@ -1,35 +1,36 @@
 import React, { useState } from 'react'
 
-const Item = ({ item, updateItem, setRoute, setEditId }) => {
-	const [ complete, setComplete ] = useState(item.complete)
+const Task = ({ task, updateTask, setRoute, setEditId }) => {
+	const [ complete, setComplete ] = useState(task.complete)
 
 	const handleToggle = () => {
-		updateItem({
-			id: item.id,
-			text: item.text,
+		updateTask({
+			id: task.id,
+			text: task.text,
+			card: task.card,
 			complete: complete === 0 ? 1 : 0
 		})
 		setComplete(complete === 0 ? 1 : 0)
-		console.log(`Toggling item ${item.id}`)
+		console.log(`Toggling task ${task.id}`)
 	}
 
 	const handleEdit = () => {
-		setEditId(item.id)
+		setEditId(task.id)
 		setRoute('edit')
 	}
 
 	return (
 		<div>
-			{item.id}
+			{task.id}
 			<input
 				type='checkbox'
 				checked={complete !== 0}
 				onChange={handleToggle}
 			/>
-			{item.text}
+			{task.text}
 			<button onClick={handleEdit}>Edit</button>
 		</div>
 	)
 }
 
-export default Item;
+export default Task;

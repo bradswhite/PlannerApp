@@ -1,18 +1,18 @@
 const url = 'http://localhost:8080/tasks/'
 
-const getItems = async setItems => {
+const getTasks = async setTasks => {
 	const data = await fetch(url + 'getAll')
 	const json = await data.json()
-	setItems(json)
+	setTasks(json)
 }
 
-const getItem = async id => {
+const getTask = async id => {
 	const data = await fetch(url + id)
 	const json = await data.json()
 	return json
 }
 
-const addItem = async text => {
+const addTask = async text => {
 	const res = await fetch(url + 'add', {
 		method: 'POST',
 		headers: { 'Content-type': 'application/json' },
@@ -24,18 +24,18 @@ const addItem = async text => {
 	return parseInt(await res.text())
 }
 
-const updateItem = async newItem => {
-	await fetch(url + newItem.id, {
+const updateTask = async newTask => {
+	await fetch(url + newTask.id, {
 		method: 'PUT',
 		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify(newItem)
+		body: JSON.stringify(newTask)
 	})
-	console.log(`Item ${newItem.id} updated`)
+	console.log(`Task ${newTask.id} updated`)
 }
 
-const delItem = async id => {
+const delTask = async id => {
 	await fetch(url + id, { method: 'DELETE' })
-	console.log(`Item ${id} deleted`)
+	console.log(`Task ${id} deleted`)
 }
 
-export { getItems, getItem, addItem, updateItem, delItem };
+export { getTasks, getTask, addTask, updateTask, delTask };

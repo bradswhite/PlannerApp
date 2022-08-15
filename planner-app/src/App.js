@@ -1,53 +1,52 @@
 import React, { useState, useEffect } from 'react'
 
-import { getItems, addItem, updateItem } from './services/itemService'
+import { getTasks, addTask, updateTask } from './services/taskService'
 
 import Header from './components/Header'
-import Items from './components/Items'
-import AddItem from './components/AddItem'
+import Cards from './components/Cards'
+import AddTask from './components/AddTask'
 import Edit from './components/Edit'
 
 const App = () => {
-	const [ items, setItems ] = useState([])
+	const [ tasks, setTasks ] = useState([])
 
 	const [ route, setRoute ] = useState('home')
 
 	const [ editId, setEditId ] = useState(0)
 
-	useEffect(() => { getItems(setItems) }, [])
+	const [ cardAddKey, setCardAddKey ] = useState()
+
+	useEffect(() => { getTasks(setTasks) }, [])
 
 	return (
 		<div>
 			<Header />
 			{route === 'home' ? (
 				<div>
-					<Items
-						items={items}
-						updateItem={updateItem}
+					<Cards
+						tasks={tasks}
+						updateTask={updateTask}
 						setRoute={setRoute}
 						setEditId={setEditId}
+						setCardAddKey={setCardAddKey}
 					/>
-					<button
-						onClick={() => setRoute('add')}
-					>
-						Add Item
-					</button>
 				</div>
 			) : route === 'add' ? (
 				<div>
-					<AddItem
-						items={items}
-						setItems={setItems}
-						addItem={addItem}
+					<AddTask
+						tasks={tasks}
+						setTasks={setTasks}
+						cardKey={cardAddKey}
+						addTask={addTask}
 						setRoute={setRoute}
 					/>
 				</div>
 			) : (
 				<Edit
 					setRoute={setRoute}
-					item={items.filter(item => item.id === editId)[0]}
-					items={items}
-					setItems={setItems}
+					task={tasks.filter(task => task.id === editId)[0]}
+					tasks={tasks}
+					setTasks={setTasks}
 				/>
 			)}
 		</div>
@@ -55,3 +54,4 @@ const App = () => {
 }
 
 export default App
+

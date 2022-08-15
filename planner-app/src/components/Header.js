@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = () => (
 	<div>
-		<h1>Howdy there sir!</h1>
+		<h1>Productivity Planner App</h1>
 	</div>
 )
 

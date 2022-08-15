@@ -64,6 +64,7 @@ public class TasksController {
 				.map(task -> {
 					task.setText(newTask.getText());
 					task.setComplete(newTask.getComplete());
+					task.setCard(newTask.getCard());
 					return tasksRepo.save(task);
 				})
 				.orElseGet(() -> {

@@ -1,23 +1,38 @@
 import React, { useState } from 'react'
 
-import { updateItem, delItem } from './../services/itemService'
+import Select from 'react-select'
 
-const Edit = ({ setRoute, item, items, setItems }) => {
-	const [ text, setText ] = useState(item.text)
+import { updateTask, delTask } from './../services/taskService'
+
+const Edit = ({ setRoute, task, tasks, setTasks }) => {
+	const [ text, setText ] = useState(task.text)
+
+	const [ card, setCard ] = useState(task.card)
+
+	const cardNames = [
+		{ label: 'Monday', value: 0 },
+		{ label: 'Tuesday', value: 1 },
+		{ label: 'Wednesday', value: 2 },
+		{ label: 'Thursday', value: 3 },
+		{ label: 'Friday', value: 4 }
+	]	
+	const cardKeys = { m: 0, t: 1, w: 2, th: 3, f: 4 }
 
 	const handleEdit = () => {
-		updateItem({
-			id: item.id,
+		updateTask({
+			id: task.id,
 			text,
-			complete: item.complete
+			card,
+			complete: task.complete
 		})
 
-		setItems(
-			items.map(i => i.id === item.id ?
+		setTasks(
+			tasks.map(i => i.id === task.id ?
 				{
-					id: item.id,
+					id: task.id,
 					text,
-					complete: item.complete
+					card,
+					complete: task.complete
 				} : i
 			)
 		)
@@ -26,10 +41,10 @@ const Edit = ({ setRoute, item, items, setItems }) => {
 	}
 
 	const handleDel = () => {
-		delItem(item.id)
+		delTask(task.id)
 
-		setItems(
-			items.filter(i => i.id !== item.id)
+		setTasks(
+			tasks.filter(i => i.id !== task.id)
 		)
 
 		setRoute('home')
@@ -38,10 +53,15 @@ const Edit = ({ setRoute, item, items, setItems }) => {
 	return (
 		<div>
 			<h2>Edit</h2>
-			{item.id}
+			{task.id}
 			<input
 				value={text}
 				onChange={e => setText(e.currentTarget.value)}
+			/>
+			<Select
+				options={cardNames}
+				defaultValue={cardNames[cardKeys[card]]}
+				onChange={e => setCard([ 'm', 't', 'w', 'th', 'f' ][e.value])}
 			/>
 			<button onClick={handleEdit}>Edit</button>
 			<button onClick={handleDel}>Delete</button>

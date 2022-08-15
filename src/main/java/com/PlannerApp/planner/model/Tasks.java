@@ -12,7 +12,7 @@ public class Tasks {
 	private int id;
 	private String text;
 	private int complete;
-	private String schedule;
+	private String card;
 
 	public Tasks() {}
 
@@ -25,7 +25,7 @@ public class Tasks {
 	public int getComplete() { return complete; }
 	public void setComplete( int complete ) { this.complete = complete; }
 
-	public String getSchedule() { return schedule; }
-	public void setSchedule( String schedule ) { this.schedule = schedule; }
+	public String getCard() { return card; }
+	public void setCard( String card ) { this.card = card; }
 
 }
