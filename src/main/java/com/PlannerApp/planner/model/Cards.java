@@ -11,29 +11,20 @@ import javax.persistence.Id;
  * @date 8-2022
  */
 @Entity
-public class Tasks {
+public class Cards {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	// Task data values:
 	private int id;
-	private String text;
-	private int complete;
-	private int card;
+	private String name;
 
-	public Tasks() {}
+	public Cards() {}
 
 	// Getter and setter methods:
 	
 	public int getId() { return id; }
 	public void setId( int id ) { this.id = id; }
 	
-	public String getText() { return text; }
-	public void setText( String text ) { this.text = text; }
-
-	public int getComplete() { return complete; }
-	public void setComplete( int complete ) { this.complete = complete; }
-
-	public int getCard() { return card; }
-	public void setCard( int card ) { this.card = card; }
-
+	public String getName() { return name; }
+	public void setName( String name ) { this.name = name; }
 }

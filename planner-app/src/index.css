@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	@apply bg-fixed bg-gradient-to-tr from-independence via-dark-sea-green to-timberwolf;
+}
+
+ion-icon {
+	@apply text-2xl hover:bg-slate-400 rounded-lg;
+}
+
+.header-add-btn > ion-icon {
+	--ionicon-stroke-width: 45px;
+	@apply text-3xl text-independence hover:bg-slate-300 rounded-lg;
+}

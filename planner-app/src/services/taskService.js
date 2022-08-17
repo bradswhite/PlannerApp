@@ -1,5 +1,5 @@
 /**
- * Service functions to interact with db
+ * Service functions to interact with tasks in db
  * @author Brad White
  * @data 8-22
  */
@@ -35,14 +35,15 @@ const getTask = async id => {
  * Adds task to db
  * @async
  * @param {string} text - text of new task
+ * @param {string} card - card of new task
  * @returns {number} - id of new task
  */
-const addTask = async text => {
+const addTask = async (text, card) => {
 	const res = await fetch(url + 'add', {
 		method: 'POST',
 		headers: { 'Content-type': 'application/json' },
 		body: JSON.stringify({
-			text, complete: 0
+			text, card, complete: 0
 		})
 	})
 	console.log('New item added')

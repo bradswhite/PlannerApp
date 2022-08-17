@@ -4,19 +4,23 @@ import Select from 'react-select'
 
 import { updateTask, delTask } from './../services/taskService'
 
-const Edit = ({ setRoute, task, tasks, setTasks }) => {
+/**
+ * Displays form to edit task
+ * @param {json} cards
+ * @param {json} task
+ * @param {json} tasks
+ * @param {method} setTasks
+ * @param {method} setRoute
+ * @returns {jsx}
+ */
+const Edit = ({ setRoute, cards, task, tasks, setTasks }) => {
 	const [ text, setText ] = useState(task.text)
 
 	const [ card, setCard ] = useState(task.card)
 
-	const cardNames = [
-		{ label: 'Monday', value: 0 },
-		{ label: 'Tuesday', value: 1 },
-		{ label: 'Wednesday', value: 2 },
-		{ label: 'Thursday', value: 3 },
-		{ label: 'Friday', value: 4 }
-	]	
-	const cardKeys = { m: 0, t: 1, w: 2, th: 3, f: 4 }
+	const cardNames = []
+	for (var i in cards)
+		cardNames[i] = { label: cards[i], value: i }
 
 	const handleEdit = () => {
 		updateTask({
@@ -60,8 +64,8 @@ const Edit = ({ setRoute, task, tasks, setTasks }) => {
 			/>
 			<Select
 				options={cardNames}
-				defaultValue={cardNames[cardKeys[card]]}
-				onChange={e => setCard([ 'm', 't', 'w', 'th', 'f' ][e.value])}
+				defaultValue={cardNames[card]}
+				onChange={e => setCard(e.value)}
 			/>
 			<button onClick={handleEdit}>Edit</button>
 			<button onClick={handleDel}>Delete</button>

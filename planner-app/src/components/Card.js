@@ -23,8 +23,8 @@ const Card = ({ tasks, cardName, cardKey, updateTask, setRoute, setEditId, setCa
 	}
 
 	return (
-		<div>
-			<h3>{cardName}</h3>
+		<div className='flex-none w-80 bg-slate-300 shadow-lg rounded p-6 mx-3 h-min'>
+			<h3 className='text-xl font-semibold'>{cardName}</h3>
 			<div>
 				{/* Displays tasks for card: */}
 				<Tasks
@@ -34,7 +34,7 @@ const Card = ({ tasks, cardName, cardKey, updateTask, setRoute, setEditId, setCa
 					setEditId={setEditId}
 				/>
 				<button onClick={handleAdd}>
-					Add Task
+					<ion-icon name="add-outline"></ion-icon>
 				</button>
 			</div>
 		</div>

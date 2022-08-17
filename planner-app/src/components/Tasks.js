@@ -12,11 +12,12 @@ import Task from './Task'
  */
 const Tasks = ({ tasks, updateTask, setRoute, setEditId }) => {
 	return (
-		<div>
+		<div className='grid grid-row-flow gap-2 py-2'>
 			{/* Displays each task that belongs in card: */}
-			{tasks.map(task => (
+			{tasks.map((task, index) => (
 				<Task
 					task={task}
+					index={index}
 					updateTask={updateTask}
 					setRoute={setRoute}
 					setEditId={setEditId}

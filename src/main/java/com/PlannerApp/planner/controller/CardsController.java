@@ -3,8 +3,8 @@ package com.PlannerApp.planner.controller;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import com.PlannerApp.planner.model.Tasks;
-import com.PlannerApp.planner.repo.TasksRepo;
+import com.PlannerApp.planner.model.Cards;
+import com.PlannerApp.planner.repo.CardsRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,85 +23,83 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 
 /**
- * Contains all the rest routes to call the methods to access and manipulate tasks in the db
+ * Contains all the rest routes to call the methods to access and manipulate cards in the db
  * @author Brad White
  * @date 8-22
  */
 @RestController
-@RequestMapping("/tasks")
+@RequestMapping("/cards")
 @CrossOrigin
-public class TasksController {
+public class CardsController {
 	@Autowired
-	private TasksRepo tasksRepo;
+	private CardsRepo cardsRepo;
 
 	/**
-	 * Adds a task to the db
-	 * @param {Task} task - task to add
-	 * @return id - id of new task
+	 * Adds a card to the db
+	 * @param {Card} card - card to add
+	 * @return id - id of new card
 	 * @example:
-	 * User calls '.../tasks/add' with POST method and json in body
+	 * User calls '.../cards/add' with POST method and json in body
 	 */
 	@PostMapping("/add")
 	public int add(
-		@RequestBody Tasks task
+		@RequestBody Cards card
 	) {
-		tasksRepo.save(task);
-		return task.getId();
+		cardsRepo.save(card);
+		return card.getId();
 	}
 
 	/**
-	 * Gets and returns all tasks from db
-	 * @return all tasks from db
+	 * Gets and returns all cards from db
+	 * @return all cards from db
 	 * @example:
-	 * User calls '../tasks/getAll' with GET method
+	 * User calls '../cards/getAll' with GET method
 	 */
 	@GetMapping("/getAll")
-	public List<Tasks> getAllItems() {
-		return tasksRepo.findAll();
+	public List<Cards> getAllItems() {
+		return cardsRepo.findAll();
 	}
 
 	/**
-	 * Gets task by id from db if found
+	 * Gets card by id from db if found
 	 * @param {int} id
-	 * @return task data
+	 * @return card data
 	 * @example:
-	 * User calls '../tasks/5' with GET method to retrive task with id 5
+	 * User calls '../cards/5' with GET method to retrive card with id 5
 	 */
 	@GetMapping("/{id}")
-	public ResponseEntity<Tasks> get(
+	public ResponseEntity<Cards> get(
 		@PathVariable int id
 	) {
 		try {
-			Tasks task = tasksRepo.findById(id).get();
-			return new ResponseEntity<Tasks>(task, HttpStatus.OK);
+			Cards card = cardsRepo.findById(id).get();
+			return new ResponseEntity<Cards>(card, HttpStatus.OK);
 		} catch (NoSuchElementException e) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
 	/**
-	 * Updates task in db by id
-	 * @param {Task} task - data to update existing task
-	 * @param {int} id - id of task to update
+	 * Updates card in db by id
+	 * @param {Card} card - data to update existing card
+	 * @param {int} id - id of card to update
 	 * @return successful or unsuccessful http response
 	 * @example:
-	 * User calls '../tasks/4' with PUT method and json in body to update task
+	 * User calls '../cards/4' with PUT method and json in body to update card
 	 */
 	@PutMapping("/{id}")
-	public ResponseEntity<Tasks> update(
-		@RequestBody Tasks newTask,
+	public ResponseEntity<Cards> update(
+		@RequestBody Cards newCard,
 		@PathVariable int id
 	) {
 		try {
-			tasksRepo.findById(id)
-				.map(task -> {
-					task.setText(newTask.getText());
-					task.setComplete(newTask.getComplete());
-					task.setCard(newTask.getCard());
-					return tasksRepo.save(task);
+			cardsRepo.findById(id)
+				.map(card -> {
+					card.setName(newCard.getName());
+					return cardsRepo.save(card);
 				})
 				.orElseGet(() -> {
-					return tasksRepo.save(newTask);
+					return cardsRepo.save(newCard);
 				});
 
 			return new ResponseEntity<>(HttpStatus.OK);
@@ -111,17 +109,17 @@ public class TasksController {
 	}
 
 	/**
-	 * Deletes task in db by id
-	 * @param {int} id - id of task to delete
+	 * Deletes card in db by id
+	 * @param {int} id - id of card to delete
 	 * @return confirmation string
 	 * @example:
-	 * User calls '../tasks/7' with DELETE method to delete task number 7
+	 * User calls '../cards/7' with DELETE method to delete card number 7
 	 */
 	@DeleteMapping("/{id}")
 	public String delete(
 		@PathVariable int id
 	) {
-		tasksRepo.deleteById(id);
+		cardsRepo.deleteById(id);
 		return "Deleted item with id " + id;
 	}
 }

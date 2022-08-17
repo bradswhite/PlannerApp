@@ -8,7 +8,7 @@ import React, { useState } from 'react'
  * @param {method} setEditId
  * @returns {jsx}
  */
-const Task = ({ task, updateTask, setRoute, setEditId }) => {
+const Task = ({ task, index, updateTask, setRoute, setEditId }) => {
 	const [ complete, setComplete ] = useState(task.complete)
 
 	/**
@@ -27,21 +27,23 @@ const Task = ({ task, updateTask, setRoute, setEditId }) => {
 	 * Redirects to edit task route with present task as default
 	 */
 	const handleEdit = () => {
-		setEditId(task.id)
+		setEditId(index)
 		setRoute('edit')
 	}
 
 	return (
-		<div>
+		<div className='row-span-1 bg-slate-100 shadow-md rounded-md p-4' onClick={handleEdit}>
 			{/* Commented out task id below because it is irrelavant to users: */}
 			{/*task.id*/}
 			<input
 				type='checkbox'
 				checked={complete !== 0}
 				onChange={handleToggle}
+		        className='form-check-input appearance-none h-4 w-4 border mt-1.5 border-gray-400 rounded-sm bg-gray-200 checked:bg-independence checked:border-independence focus:outline-none transition duration-200 my-1 align-top bg-no-repeat bg-center bg-contain cursor-pointer'
 			/>
 			{task.text}
-			<button onClick={handleEdit}>Edit</button>
+		{/*<button onClick={handleEdit}>Edit</button>*/}
+		{/*	<div className='bg-dark-sea-green rounded-full w-5 h-5'></div>*/}
 		</div>
 	)
 }

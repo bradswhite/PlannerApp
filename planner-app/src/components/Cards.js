@@ -5,29 +5,29 @@ import Card from './Card'
 /**
  * Sorts tasks to send and display in cards
  * @param {json} tasks
+ * @param {json} cards
  * @param {method} updateTask
  * @param {method} setRoute
  * @param {method} setEditId
  * @param {method} setCardAddKey
  * @returns {jsx}
  */
-const Cards = ({ tasks, updateTask, setRoute, setEditId, setCardAddKey }) => {
-	const cardNames = [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ]
-	const cardKeys = { m: 0, t: 1, w: 2, th: 3, f: 4 }
-	
-	const cardTaskMatrix = [ [], [], [], [], [] ]
+const Cards = ({ tasks, cards, updateTask, setRoute, setEditId, setCardAddKey }) => {
+	const cardTasksList = []
+	for (var i in cards) cardTasksList[i] = []
 
-	// Sorts and populates card matrix array with tasks:
-	tasks.map(task => cardTaskMatrix[cardKeys[task.card]].push(task))
+	// Sorts and populates card tasks array with tasks for each card:
+	tasks.map(task => cardTasksList[task.card].push(task))
 
+	/* Remove grid and make go off page: */
 	return (
-		<div>
+		<div className='flex pt-6 px-4'>
 			{/* Loops thru card matrix array and displays individual cards: */}
-			{cardTaskMatrix.map((cardTasks, i) => (
+			{cardTasksList.map((cardTasks, i) => (
 				<Card
 					tasks={cardTasks}
-					cardName={cardNames[i]}
-					cardKey={[ 'm', 't', 'w', 'th', 'f' ][i]}
+					cardName={cards[i]}
+					cardKey={i}
 					updateTask={updateTask}
 					setRoute={setRoute}
 					setEditId={setEditId}
