@@ -1,19 +1,18 @@
 import React, { useState } from 'react'
-
 import { Link, useParams } from 'react-router-dom'
 import Select from 'react-select'
+
+// Service rest api functions:
+import { addTask } from './../services/taskService'
 
 /**
  * Displays form to add task
  * @param {json} tasks
  * @param {json} cards
  * @param {method} setTasks
- * @param {string} cardKey
- * @param {method} addTask
- * @param {method} setRoute
  * @returns {jsx}
  */
-const Add = ({ tasks, cards, setTasks, addTask }) => {
+const Add = ({ tasks, cards, setTasks }) => {
 	const { key } = useParams()
 	const cardKey = parseInt(key)
 

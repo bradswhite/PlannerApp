@@ -6,10 +6,6 @@ import Card from './Card'
  * Sorts tasks to send and display in cards
  * @param {json} tasks
  * @param {json} cards
- * @param {method} updateTask
- * @param {method} setRoute
- * @param {method} setEditId
- * @param {method} setCardAddKey
  * @returns {jsx}
  */
 const Cards = ({ tasks, cards, updateTask }) => {
@@ -28,7 +24,6 @@ const Cards = ({ tasks, cards, updateTask }) => {
 					tasks={cardTasks}
 					cardName={cards[i]}
 					cardKey={i}
-					updateTask={updateTask}
 				/>
 			))}
 		</div>

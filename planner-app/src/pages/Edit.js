@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-
 import { Link, useParams } from 'react-router-dom'
-
 import Select from 'react-select'
 
+// Service rest api functions:
 import { updateTask, delTask } from './../services/taskService'
 
 /**
@@ -12,7 +11,6 @@ import { updateTask, delTask } from './../services/taskService'
  * @param {json} task
  * @param {json} tasks
  * @param {method} setTasks
- * @param {method} setRoute
  * @returns {jsx}
  */
 const Edit = ({ setRoute, cards, tasks, setTasks }) => {
@@ -21,7 +19,6 @@ const Edit = ({ setRoute, cards, tasks, setTasks }) => {
 	const task = tasks.filter(task => task.id === taskId)[0]
 
 	const [ text, setText ] = useState(task.text)
-
 	const [ card, setCard ] = useState(task.card)
 
 	const cardNames = []

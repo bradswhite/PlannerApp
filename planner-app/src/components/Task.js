@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import { updateTask } from './../services/taskService'
+
 /**
  * Displays task with edit button
  * @param {json} tasks
- * @param {method} updateTask
- * @param {method} setRoute
- * @param {method} setEditId
+ * @param {int} index
  * @returns {jsx}
  */
-const Task = ({ task, index, updateTask }) => {
+const Task = ({ task, index }) => {
 	const [ complete, setComplete ] = useState(task.complete)
 
 	/**

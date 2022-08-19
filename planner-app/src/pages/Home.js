@@ -2,15 +2,15 @@ import React from 'react'
 
 import Cards from '../components/Cards'
 
-const Home = ({ tasks, cards, updateTask, setRoute, setEditId, setCardAddKey }) => {
+/**
+ * Displays home route
+ * @returns {jsx}
+ */
+const Home = ({ tasks, cards, updateTask }) => {
 	return (
 		<Cards
 			tasks={tasks}
 			cards={cards}
-			updateTask={updateTask}
-			setRoute={setRoute}
-			setEditId={setEditId}
-			setCardAddKey={setCardAddKey}
 		/>
 	)
 }

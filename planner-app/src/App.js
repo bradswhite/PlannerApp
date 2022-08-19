@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom'
 
 // Service rest api functions:
-import { getTasks, addTask, updateTask } from './services/taskService'
+import { getTasks } from './services/taskService'
 import { getCards } from './services/cardService'
 
 import Home from './pages/Home'
@@ -13,12 +13,11 @@ import Edit from './pages/Edit'
 import Header from './components/Header'
 
 /**
- * Displays app with routes: home, add or edit
+ * Displays app with routes: home, addTask or edit
  * @returns {jsx}
  */
 const App = () => {
 	const [ tasks, setTasks ] = useState([])
-
 	const [ cards, setCards ] = useState([])
 
 	// This will run when component mounts (page loads) and populate us with initial tasks and cards:
@@ -40,7 +39,6 @@ const App = () => {
 							element={<Home
 								tasks={tasks}
 								cards={cards}
-								updateTask={updateTask}
 							/>}
 						/>
 						<Route
@@ -49,7 +47,6 @@ const App = () => {
 								tasks={tasks}
 								cards={cards}
 								setTasks={setTasks}
-								addTask={addTask}
 							/>}
 						/>
 						<Route
