@@ -2,9 +2,13 @@
 ## This is a productivity planning app built with React.js, Java Spring Boot and Tailwind.css
 This app is running on https://pro-planner-app.netlify.app/
 
-images here...
+<img width="1363" alt="planner-app 1 screenshot" src="https://user-images.githubusercontent.com/97484878/185636426-a88e03d6-3f41-4492-b5ae-7d0aa8f04b44.png">
+<img width="1367" alt="planner-app 2 screenshot" src="https://user-images.githubusercontent.com/97484878/185636436-74709183-637b-4793-9081-ad2e3163860b.png">
+<img width="1364" alt="planner-app 3 screenshot" src="https://user-images.githubusercontent.com/97484878/185636512-8e041ca0-5632-48a7-bca1-0aee87fe3524.png">
+<img width="1364" alt="planner-app 4 screenshot" src="https://user-images.githubusercontent.com/97484878/185636526-4c0e5d7d-8b2b-4e4f-8a1a-bc6add6cc1b6.png">
 
-Note: this is also the first project I made using my new programming setup of Ubuntu/Neovim
+
+Note: this is also the first project I made using my new programming setup of Ubuntu VM/Neovim
 
 ###### Requirements:
 - Java SDK 17
