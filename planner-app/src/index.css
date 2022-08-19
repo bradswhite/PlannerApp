@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-	@apply bg-fixed bg-gradient-to-tr from-independence via-dark-sea-green to-timberwolf;
+	@apply bg-fixed bg-gradient-to-tr from-independence via-dark-sea-green to-timberwolf overflow-y-hidden;
 }
 
 ion-icon {
