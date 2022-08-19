@@ -7,10 +7,10 @@ body {
 }
 
 ion-icon {
-	@apply text-2xl hover:bg-slate-400 rounded-lg;
+	@apply text-3xl text-independence hover:text-battleship-grey;
 }
 
 .header-add-btn > ion-icon {
 	--ionicon-stroke-width: 45px;
-	@apply text-3xl text-independence hover:bg-slate-300 rounded-lg;
+	@apply text-4xl;
 }

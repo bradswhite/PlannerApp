@@ -12,7 +12,7 @@ import Card from './Card'
  * @param {method} setCardAddKey
  * @returns {jsx}
  */
-const Cards = ({ tasks, cards, updateTask, setRoute, setEditId, setCardAddKey }) => {
+const Cards = ({ tasks, cards, updateTask }) => {
 	const cardTasksList = []
 	for (var i in cards) cardTasksList[i] = []
 
@@ -29,9 +29,6 @@ const Cards = ({ tasks, cards, updateTask, setRoute, setEditId, setCardAddKey })
 					cardName={cards[i]}
 					cardKey={i}
 					updateTask={updateTask}
-					setRoute={setRoute}
-					setEditId={setEditId}
-					setCardAddKey={setCardAddKey}
 				/>
 			))}
 		</div>

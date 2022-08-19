@@ -10,7 +10,7 @@ import Task from './Task'
  * @param {method} setEditId
  * @returns {jsx}
  */
-const Tasks = ({ tasks, updateTask, setRoute, setEditId }) => {
+const Tasks = ({ tasks, updateTask }) => {
 	return (
 		<div className='grid grid-row-flow gap-2 py-2'>
 			{/* Displays each task that belongs in card: */}
@@ -19,8 +19,6 @@ const Tasks = ({ tasks, updateTask, setRoute, setEditId }) => {
 					task={task}
 					index={index}
 					updateTask={updateTask}
-					setRoute={setRoute}
-					setEditId={setEditId}
 				/>
 			))}
 		</div>

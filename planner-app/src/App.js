@@ -21,12 +21,6 @@ const App = () => {
 
 	const [ cards, setCards ] = useState([])
 
-	const [ route, setRoute ] = useState('home')
-
-	const [ editId, setEditId ] = useState(0)
-
-	const [ cardAddKey, setCardAddKey ] = useState()
-
 	// This will run when component mounts (page loads) and populate us with initial tasks and cards:
 	useEffect(() => {
 		getTasks(setTasks)
@@ -35,55 +29,41 @@ const App = () => {
 
 	/* Colors: timberwolf, laural-green, dark-sea-green, battleship-grey, independence */
 	return (
-		<div className='font-sans h-screen w-screen'>
-			<Header setRoute={setRoute} />
-			<div className='pt-20'>
-				<Router>
+		<Router>
+			<div className='font-sans h-screen w-screen'>
+				<Header />
+				<div className='pt-20'>
 					<Routes>
 						<Route
 							path='/'
 							exact
-							index
 							element={<Home
 								tasks={tasks}
 								cards={cards}
 								updateTask={updateTask}
-								setRoute={setRoute}
-								setEditId={setEditId}
-								setCardAddKey={setCardAddKey}
 							/>}
 						/>
 						<Route
-							path='/addTask'
+							path='/addTask/:key'
 							element={<AddTask
 								tasks={tasks}
 								cards={cards}
 								setTasks={setTasks}
-								cardKey={cardAddKey}
 								addTask={addTask}
-								setRoute={setRoute}
 							/>}
 						/>
 						<Route
-							path='/edit'
+							path='/edit/:id'
 							element={<Edit
-								setRoute={setRoute}
 								cards={cards}
-								task={tasks[editId]}
 								tasks={tasks}
 								setTasks={setTasks}
 							/>}
 						/>
 					</Routes>
-				</Router>
-				{/* Remove these: */}
-				<ion-icon name="add-outline"></ion-icon>
-				<ion-icon name="close-outline"></ion-icon>
-				<ion-icon name="create-outline"></ion-icon>
-				<ion-icon name="ellipsis-horizontal-outline"></ion-icon>
-				<ion-icon name="trash-outline"></ion-icon>
+				</div>
 			</div>
-		</div>
+		</Router>
 	)
 }
 

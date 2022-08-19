@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 /**
  * Displays task with edit button
@@ -8,7 +9,7 @@ import React, { useState } from 'react'
  * @param {method} setEditId
  * @returns {jsx}
  */
-const Task = ({ task, index, updateTask, setRoute, setEditId }) => {
+const Task = ({ task, index, updateTask }) => {
 	const [ complete, setComplete ] = useState(task.complete)
 
 	/**
@@ -23,27 +24,20 @@ const Task = ({ task, index, updateTask, setRoute, setEditId }) => {
 		console.log(`Toggling task ${task.id}`)
 	}
 
-	/** 
-	 * Redirects to edit task route with present task as default
-	 */
-	const handleEdit = () => {
-		setEditId(index)
-		setRoute('edit')
-	}
-
 	return (
-		<div className='row-span-1 bg-slate-100 shadow-md rounded-md p-4' onClick={handleEdit}>
-			{/* Commented out task id below because it is irrelavant to users: */}
-			{/*task.id*/}
-			<input
-				type='checkbox'
-				checked={complete !== 0}
-				onChange={handleToggle}
-		        className='form-check-input appearance-none h-4 w-4 border mt-1.5 border-gray-400 rounded-sm bg-gray-200 checked:bg-independence checked:border-independence focus:outline-none transition duration-200 my-1 align-top bg-no-repeat bg-center bg-contain cursor-pointer'
-			/>
-			{task.text}
-		{/*<button onClick={handleEdit}>Edit</button>*/}
-		{/*	<div className='bg-dark-sea-green rounded-full w-5 h-5'></div>*/}
+		<div className='bg-slate-100 shadow-md rounded-md p-4 flow-root'>
+			<div className='row-span-1 flex float-left'>
+				<input
+					type='checkbox'
+					checked={complete !== 0}
+					onChange={handleToggle}
+					className='form-check-input appearance-none h-4 w-4 border mt-1.5 border-gray-400 rounded-sm bg-gray-200 checked:bg-independence checked:border-independence focus:outline-none transition duration-200 my-1 align-top bg-no-repeat bg-center bg-contain cursor-pointer'
+				/>
+				<p className='mx-4 text-md text-independence'>{task.text}</p>
+			</div>
+			<Link className='float-right' to={`/edit/${task.id}`}>
+				<ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+			</Link>
 		</div>
 	)
 }

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
+
 import Tasks from './Tasks'
 
 /**
@@ -13,15 +15,7 @@ import Tasks from './Tasks'
  * @param {method} setCardAddKey
  * @returns {jsx}
  */
-const Card = ({ tasks, cardName, cardKey, updateTask, setRoute, setEditId, setCardAddKey }) => {
-	/**
-	 * Redirects to add task route with present card as default
-	 */
-	const handleAdd = () => {
-		setCardAddKey(cardKey)
-		setRoute('add')
-	}
-
+const Card = ({ tasks, cardName, cardKey, updateTask }) => {
 	return (
 		<div className='flex-none w-80 bg-slate-300 shadow-lg rounded p-6 mx-3 h-min'>
 			<h3 className='text-xl font-semibold'>{cardName}</h3>
@@ -30,12 +24,13 @@ const Card = ({ tasks, cardName, cardKey, updateTask, setRoute, setEditId, setCa
 				<Tasks
 					tasks={tasks}
 					updateTask={updateTask}
-					setRoute={setRoute}
-					setEditId={setEditId}
 				/>
-				<button onClick={handleAdd}>
+				<Link
+					className='grid grid-row-1 place-items-center'
+					to={`/addTask/${cardKey}`}
+				>
 					<ion-icon name="add-outline"></ion-icon>
-				</button>
+				</Link>
 			</div>
 		</div>
 	)
