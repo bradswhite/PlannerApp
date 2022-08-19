@@ -33,7 +33,7 @@ const Task = ({ task, index, updateTask }) => {
 					onChange={handleToggle}
 					className='form-check-input appearance-none h-4 w-4 border mt-1.5 border-gray-400 rounded-sm bg-gray-200 checked:bg-independence checked:border-independence focus:outline-none transition duration-200 my-1 align-top bg-no-repeat bg-center bg-contain cursor-pointer'
 				/>
-				<p className='mx-4 text-md text-independence'>{task.text}</p>
+				<p className={(complete ? 'line-through ' : '') + `mx-4 text-md text-independence`}>{task.text}</p>
 			</div>
 			<Link className='float-right' to={`/edit/${task.id}`}>
 				<ion-icon name="ellipsis-horizontal-outline"></ion-icon>
