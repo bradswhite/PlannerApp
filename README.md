@@ -1,6 +1,5 @@
 # PlannerApp
 ## This is a productivity planning app built with React.js, Java Spring Boot and Tailwind.css
-This app is running on https://pro-planner-app.netlify.app/
 
 <img width="1363" alt="planner-app 1 screenshot" src="https://user-images.githubusercontent.com/97484878/185636426-a88e03d6-3f41-4492-b5ae-7d0aa8f04b44.png">
 <img width="1367" alt="planner-app 2 screenshot" src="https://user-images.githubusercontent.com/97484878/185636436-74709183-637b-4793-9081-ad2e3163860b.png">
