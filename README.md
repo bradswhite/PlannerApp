@@ -18,7 +18,8 @@ Note: this is also the first project I made using my new programming setup of Ub
 ###### Installation:
 To install Tailwind CSS run `npm install -D tailwindcss@npm:@tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9`.
 
-To start up the server run `mvn spring-boot:run`.
+To start up the server run `mvn spring-boot:run`. Then navigate to `localhost:8080/h2-console` and click on connect.  From here run the following SQL query to populate the database with cards: `INSERT INTO CARDS (NAME) values
+  ('Sunday'), ('Monday'), ('Tuesday'), ('Wednesday'), ('Thursday'), ('Friday'), ('Saturday');`
 
 To start up the front end navigate to planner-app using the `cd planner-app` command. Then run `npm run start` to start the app.
 
